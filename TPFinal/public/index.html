@@ -10,24 +10,27 @@
   <body>
     <h1>TP final Node.js</h1>
     <p>
-      Bienvenue dans le TP final de Node.js. Ce TP consiste à créer une API
-      RESTful générique capable de gérer différentes entités.
+      Bienvenue dans le TP final de Node.js. Ce TP consiste à créer une API REST
+      pour enregistrer ses recettes.
     </p>
     <h2>Instructions</h2>
     <ol>
-      <li>Cloner le dépôt GitHub fourni.</li>
-      <li>Installer les dépendances avec <code>npm install</code>.</li>
-      <li>Configurer la base de données MongoDB.</li>
-      <li>
-        Lancer le serveur avec <code>npm start</code> ou en mode développement
-        avec <code>npm run dev</code>.
-      </li>
+      <li>Créer format recette</li>
+      <input type="checkbox" />
+      <li>Insérer les 2 recettes.</li>
+      <input type="checkbox" />
+      <li>Implémenter les routes classiques</li>
+      <input type="checkbox" />
+      <li>routes complexes avec query</li>
+      <input type="checkbox" />
       <li>Tester les différentes routes de l'API pour gérer les entités.</li>
     </ol>
-    <h2>Technologies utilisées</h2>
-    <ul>
-      <li>Node.js</li>
-    </ul>
+    <label for="goToIdRecipe"
+      >Inscrivez le numéro de la recette que vous voulez voir</label
+    >
+    <input type="text" id="goToIdRecipe" />
+    <button id="goToIdBtn">Voir la recette</button>
+
     <a href="/api/all">GET "all items"</a>
     <span
       >je vais mettre plus tard en place comment choisir vers quel item on veut
@@ -37,21 +40,73 @@
     <a href="/api/all/2">GET "item with id 2"</a><br />
     <a href="/api/all/3">GET "item with id 3"</a><br />
     <p>Etc Etc ...</p>
-    <form action="POST" id="createItem">
-      <legend><strong>Création</strong> item</legend>
-      <label for="name">Name of the item</label>
-      <input type="text" id="name" name="name" />
-      <label for="description">Description de l'item</label>
-      <input type="text" id="description" name="description" />
+    <form id="createRecipe">
+      <legend><strong>Création</strong> de recette</legend>
+      <label for="name">Titre</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Nom de la recette"
+      />
+      <label for="difficulte">Difficulté de la recette</label>
+      <input type="text" id="difficulte" name="difficulte" />
+
+      <label for="ingredients">Ingredients</label>
+      <input type="text" id="ingredients" name="ingredients" />
+
+      <label for="veggie-yes">Végétarien</label>
+      <input type="radio" id="veggie-yes" name="veggie" value="true" />
+
+      <label for="veggie-no">Non végétarien</label>
+      <input type="radio" id="veggie-no" name="veggie" value="false" checked />
+
       <button id="createBtn" type="submit">Create Item</button>
     </form>
     <div id="result"></div>
     <form action="delete" id="deleteItem">
-      <legend><strong>Delete</strong> item</legend>
-      <label for="nameDelete">ID of the item</label>
+      <legend><strong>Supprimer</strong> une recette</legend>
+
+      <label for="nameDelete">ID de la recette</label>
       <input type="text" id="idDelete" name="name" />
-      <button id="deleteBtn" type="submit">Delete Item</button>
+
+      <button id="deleteBtn" type="submit">Supprimer recette</button>
     </form>
     <div id="deleteResult"></div>
+    <form id="updateRecipe">
+      <legend><strong>Modifier</strong>une recette</legend>
+
+      <label for="idUpdate">ID de la recette</label>
+      <input type="text" id="idUpdate" name="name" />
+
+      <label for="nameUpdate">Nouveau nom de la recette</label>
+      <input
+        type="text"
+        id="nameUpdate"
+        name="name"
+        placeholder="Changer nom"
+      />
+
+      <label for="difUpdate"> Nouvelle difficulté</label>
+      <input type="text" id="difUpdate" name="difficulte" />
+
+      <label for="ingUpdate"> Nouveaux ingredients</label>
+      <input type="text" id="ingUpdate" name="ingredients" />
+
+      <label for="newveggie-yes">Végétarien</label>
+      <input type="radio" id="newveggie-yes" name="updVeggie" value="true" />
+
+      <label for="newveggie-no">Non végétarien</label>
+      <input
+        type="radio"
+        id="newveggie-no"
+        name="updVeggie"
+        value="false"
+        checked
+      />
+
+      <button id="updateBtn" type="submit">Modifier la recette</button>
+    </form>
+    <div id="updateResult"></div>
   </body>
 </html>

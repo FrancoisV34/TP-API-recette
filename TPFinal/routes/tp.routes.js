@@ -21,10 +21,10 @@ module.exports = (req, res) => {
     return controller.getTodoById(req, res, id);
   }
 
-  // POST /items
+  // POST /recipes
   let items = [];
 
-  if (method === 'POST' && req.url === '/items') {
+  if (method === 'POST' && req.url === '/recipes') {
     let body = '';
     req.on('data', (chunk) => (body += chunk));
     req.on('end', () => controller.createItem(req, res, body));
@@ -41,7 +41,7 @@ module.exports = (req, res) => {
     const id = parseInt(urlParts[2], 10);
     let body = '';
     req.on('data', (chunk) => (body += chunk));
-    req.on('end', () => controller.updateTodo(req, res, id, body));
+    req.on('end', () => controller.updateRecipe(req, res, id, body));
     return;
   }
 
@@ -53,7 +53,7 @@ module.exports = (req, res) => {
     urlParts[2]
   ) {
     const id = parseInt(urlParts[2], 10);
-    return controller.deleteTodo(req, res, id);
+    return controller.deleteRecipe(req, res, id);
   }
 
   return false; // Route non trouvée → index.js s’en chargera

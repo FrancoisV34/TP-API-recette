@@ -1,22 +1,72 @@
 [
   {
     "id": 1,
-    "name": "Item 1",
-    "description": "Description for Item 1"
+    "name": "Pâtes bolo",
+    "difficulty": "moyenne",
+    "ingredients": [
+      "pâtes",
+      "tomate",
+      "viande"
+    ],
+    "isVegetarian": false
   },
   {
-    "id": 3,
-    "name": "Item 3",
-    "description": "Description for Item 3"
+    "id": 2,
+    "name": "Salade César",
+    "difficulty": "facile",
+    "ingredients": [
+      "salade",
+      "poulet"
+    ],
+    "isVegetarian": false
   },
   {
-    "id": 4,
-    "name": "qsdf",
-    "description": "sdg"
+    "id": 7,
+    "name": "Mousse au chocolat",
+    "difficulte": "High",
+    "ingredients": [
+      "Mousse chocolat"
+    ],
+    "isVegetarian": true
   },
   {
-    "id": 5,
-    "name": "fdgh",
-    "description": "jhfg"
+    "id": 8,
+    "name": "Mousse au chocolat creme",
+    "difficulte": "High+",
+    "ingredients": [
+      "Mousse chocolat cremes"
+    ],
+    "isVegetarian": true
+  },
+  {
+    "id": 9,
+    "name": "lasagne",
+    "difficulte": "High",
+    "ingredients": [
+      "pates",
+      "viande",
+      "tomates"
+    ],
+    "isVegetarian": false
+  },
+  {
+    "id": 10,
+    "name": "sdf",
+    "difficulte": "fsd",
+    "ingredients": [
+      "sdfg",
+      "pzj"
+    ],
+    "isVegetarian": false
+  },
+  {
+    "id": 11,
+    "name": "Roti toro",
+    "difficulte": "EZ",
+    "ingredients": [
+      "Roti",
+      "toro"
+    ],
+    "isVegetarian": true
   }
 ]

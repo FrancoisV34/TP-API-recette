@@ -29,12 +29,12 @@ exports.createItem = (req, res, body) => {
   }
 };
 
-exports.updateTodo = (req, res, id, body) => {
+exports.updateRecipe = (req, res, id, body) => {
   try {
     const data = JSON.parse(body);
 
     const updated = service.update(id, data);
-    if (!updated) return sendJSON(res, 404, { error: 'Todo non trouvé' });
+    if (!updated) return sendJSON(res, 404, { error: 'Recette non trouvé' });
 
     return sendJSON(res, 200, updated);
   } catch {
@@ -42,7 +42,7 @@ exports.updateTodo = (req, res, id, body) => {
   }
 };
 
-exports.deleteTodo = (req, res, id) => {
+exports.deleteRecipe = (req, res, id) => {
   const ok = service.remove(id);
   if (!ok) return sendJSON(res, 404, { error: 'Todo non trouvé' });
 

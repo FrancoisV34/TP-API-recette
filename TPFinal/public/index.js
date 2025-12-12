@@ -1,23 +1,33 @@
-const form = document.getElementById('createItem');
+const form = document.getElementById('createRecipe');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const name = document.getElementById('name').value;
-  const description = document.getElementById('description').value;
+  const difficulte = document.getElementById('difficulte').value;
+  const ingredients = document
+    .getElementById('ingredients')
+    .value.trim()
+    .split(/[\s,]+/) // espace, multiple espaces, ou virgule
+    .filter((ing) => ing.length > 0);
+  const isVegetarian =
+    document.querySelector('input[name="veggie"]:checked').value === 'true';
 
-  const response = await fetch('/items', {
+  const response = await fetch('/recipes', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       name,
-      description,
+      difficulte,
+      ingredients,
+      isVegetarian,
     }),
   });
+  console.log(response);
   const data = await response.json();
-  console.log(data);
+  console.log("qu'est ce aue tu raconte ?", data);
 
   document.getElementById(
     'result'
@@ -33,7 +43,7 @@ deleteForm.addEventListener('submit', async (e) => {
 
   const deleteItem = document.getElementById('idDelete').value;
 
-  const response = await fetch(`/api/all/${deleteItem}`, {
+  const response = await fetch(`${deleteItem}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -49,4 +59,53 @@ deleteForm.addEventListener('submit', async (e) => {
       'deleteResult'
     ).innerHTML = `<span>Error: ${data.error}</span>`;
   }
+});
+
+const updateForm = document.getElementById('updateRecipe');
+
+updateForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const updateRecipe = document.getElementById('idUpdate').value;
+  const name = document.getElementById('nameUpdate').value;
+  const difficulte = document.getElementById('difUpdate').value;
+  const ingredients = document
+    .getElementById('ingUpdate')
+    .value.trim()
+    .split(/[\s,]+/) // espace, multiple espaces, ou virgule
+    .filter((ing) => ing.length > 0);
+  const isVegetarian =
+    document.querySelector('input[name="updVeggie"]:checked').value === 'true';
+
+  const response = await fetch(`/api/all/${updateRecipe}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name,
+      difficulte,
+      ingredients,
+      isVegetarian,
+    }),
+  });
+
+  const data = await response.json();
+  if (response.status === 200) {
+    document.getElementById(
+      'updateResult'
+    ).innerHTML = `<span>Item with id ${updateRecipe} updated successfully
+    .</span>`;
+  } else {
+    document.getElementById(
+      'updateResult'
+    ).innerHTML = `<span>Error: ${data.error}</span>`;
+  }
+});
+
+const goToIdBtn = document.getElementById('goToIdBtn');
+
+goToIdBtn.addEventListener('click', () => {
+  const goToIdRecipe = document.getElementById('goToIdRecipe').value;
+  window.location.href = `/api/all/${goToIdRecipe}`;
 });

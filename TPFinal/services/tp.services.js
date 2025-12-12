@@ -4,7 +4,7 @@ const path = require('path');
 
 const DB_PATH = path.join(__dirname, '..', 'datas', 'tp.datas.json');
 
-const loadItems = () => {
+const loadRecipes = () => {
   try {
     const raw = fs.readFileSync(DB_PATH, 'utf8');
     const parsed = JSON.parse(raw);
@@ -14,56 +14,60 @@ const loadItems = () => {
   }
 };
 
-const saveItems = (items) => {
-  fs.writeFileSync(DB_PATH, JSON.stringify(items, null, 2));
+const saveRecipes = (recipes) => {
+  fs.writeFileSync(DB_PATH, JSON.stringify(recipes, null, 2));
 };
 
 // Services
 
 exports.getAll = () => {
-  return loadItems();
+  return loadRecipes();
 };
 
 exports.getById = (id) => {
-  const items = loadItems();
+  const items = loadRecipes();
   return items.find((t) => t.id === id);
 };
 
 exports.create = (data) => {
-  const items = loadItems();
+  const items = loadRecipes();
   const lastId = items.length > 0 ? items[items.length - 1].id : 0;
   const newItem = {
     id: lastId + 1,
     name: data.name,
-    description: data.description,
+    difficulte: data.difficulte,
+    ingredients: data.ingredients || [],
+    isVegetarian: data.isVegetarian || false,
   };
   items.push(newItem);
-  saveItems(items);
+  saveRecipes(items);
   return newItem;
 };
 
 exports.update = (id, data) => {
-  const items = loadItems();
+  const items = loadRecipes();
   const index = items.findIndex((t) => t.id === id);
   if (index === -1) return null;
 
   items[index] = {
     ...items[index],
-    title: data.title ?? items[index].title,
-    description: data.description ?? items[index].description,
+    name: data.name ?? items[index].name,
+    difficulte: data.difficulte ?? items[index].difficulte,
+    ingredients: data.ingredients ?? items[index].ingredients,
+    isVegetarian: data.isVegetarian ?? items[index].isVegetarian,
   };
 
-  saveItems(items);
+  saveRecipes(items);
   return items[index];
 };
 
 exports.remove = (id) => {
-  const items = loadItems();
+  const items = loadRecipes();
   const initialLength = items.length;
 
   const updated = items.filter((t) => t.id !== id);
   if (updated.length === initialLength) return false;
 
-  saveItems(updated);
+  saveRecipes(updated);
   return true;
 };
