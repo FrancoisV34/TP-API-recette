@@ -1,0 +1,17 @@
+{
+  "name": "tp-final",
+  "version": "1.0.0",
+  "description": "Test API générique pour s'adapter à la plupart des situations",
+  "main": "/public/Index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node Index.js",
+    "dev": "nodemon Index.js"
+  },
+  "keywords": [
+    "api",
+    "node.js"
+  ],
+  "author": "FrancoisV34",
+  "license": "ISC"
+}

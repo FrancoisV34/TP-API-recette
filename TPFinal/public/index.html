@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP final Node.js</title>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>TP final Node.js</h1>
+    <p>
+      Bienvenue dans le TP final de Node.js. Ce TP consiste à créer une API
+      RESTful générique capable de gérer différentes entités.
+    </p>
+    <h2>Instructions</h2>
+    <ol>
+      <li>Cloner le dépôt GitHub fourni.</li>
+      <li>Installer les dépendances avec <code>npm install</code>.</li>
+      <li>Configurer la base de données MongoDB.</li>
+      <li>
+        Lancer le serveur avec <code>npm start</code> ou en mode développement
+        avec <code>npm run dev</code>.
+      </li>
+      <li>Tester les différentes routes de l'API pour gérer les entités.</li>
+    </ol>
+    <h2>Technologies utilisées</h2>
+    <ul>
+      <li>Node.js</li>
+    </ul>
+    <a href="/api/all">GET "all items"</a>
+    <span
+      >je vais mettre plus tard en place comment choisir vers quel item on veut
+      aller, en attendant je fais des lien comme ca :</span
+    ><br /><br />
+    <a href="/api/all/1">GET "item with id 1"</a><br />
+    <a href="/api/all/2">GET "item with id 2"</a><br />
+    <a href="/api/all/3">GET "item with id 3"</a><br />
+    <p>Etc Etc ...</p>
+    <form action="POST" id="createItem">
+      <legend><strong>Création</strong> item</legend>
+      <label for="name">Name of the item</label>
+      <input type="text" id="name" name="name" />
+      <label for="description">Description de l'item</label>
+      <input type="text" id="description" name="description" />
+      <button id="createBtn" type="submit">Create Item</button>
+    </form>
+    <div id="result"></div>
+    <form action="delete" id="deleteItem">
+      <legend><strong>Delete</strong> item</legend>
+      <label for="nameDelete">ID of the item</label>
+      <input type="text" id="idDelete" name="name" />
+      <button id="deleteBtn" type="submit">Delete Item</button>
+    </form>
+    <div id="deleteResult"></div>
+  </body>
+</html>

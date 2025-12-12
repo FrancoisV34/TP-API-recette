@@ -1,0 +1,28 @@
+h1 {
+  color: #333;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+p {
+  font-size: 16px;
+  color: #666;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+a {
+  display: block;
+  margin: 10px auto;
+  width: fit-content;
+  font-size: 18px;
+  color: #007bff;
+  text-decoration: none;
+  text-align: center;
+}
+span {
+  display: block;
+  margin: 10px auto;
+  width: fit-content;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
